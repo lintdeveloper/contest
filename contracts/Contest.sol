@@ -11,14 +11,21 @@ contract Contest {
 	}
 
 	//use mapping to get or fetch the contestant details
-	mapping(uint => contestant) public contestants;
+	mapping(uint => Contestant) public contestants;
 
 	//add a public state variable to keep track of constestant count
 	uint public contestantCount;
 
+
+	//Adds constestants upon initialisation
+	constructor () public {
+		addContestant('Tom');
+		addContestant("Jerry");
+	}
+
 	//Adds a constestant
-	function addContestant (string _name) private {
-		contestantCount++
+	function addContestant (string memory _name) private {
+		contestantCount++;
 		contestants[contestantCount] = Contestant(contestantCount, _name, 0);
 	}
 }
